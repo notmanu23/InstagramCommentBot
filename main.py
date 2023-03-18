@@ -8,7 +8,7 @@ from os import system, name
 import time
 import random
 import sys
-
+from random import shuffle
 
 def get_code_from_email(username):
     mail = imaplib.IMAP4_SSL("imap.gmail.com")
@@ -99,7 +99,8 @@ def read_users(file):
             email = line.split(":")[2]
             emailPassword = line.split(":")[3]
             lst.append([username, password, email, emailPassword])
-        return lst
+            shuffle(lst)
+    return lst
 
 
 accounts = read_users("accounts.txt")
